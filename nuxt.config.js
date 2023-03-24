@@ -46,6 +46,7 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     // '@nuxtjs/auth-next',
     // '@nuxtjs/supabase',
   ],
@@ -73,29 +74,19 @@ export default {
     supabaseUrl: process.env.SUPABASE_URL
   },
 
-  // supabase: {
-  //   key: process.env.SUPABASE_API_KEY,
-  // },
+  pwa: {
+    meta: {
+      theme_color: '##007bff',
+      mobileAppIOS: true,
+      mobileApp: true,
 
-  auth: {
-    strategies: {
-      local: {
-        // token: {
-        //   property: 'token',
-        //   global: true,
-        //   // required: true,
-        //   // type: 'Bearer'
-        // },
-        // user: {
-        //   property: 'user',
-        //   // autoFetch: true
-        // },
-        endpoints: {
-          login: { url: '/login', method: 'post' },
-          logout: { url: '/logout', method: 'post' },
-          user: { url: '/user', method: 'get' }
-        }
-      }
-    }
+    },
+    manifest: {
+      name: 'Simple Blog',
+      short_name: 'Blog',
+      description: 'Simple Blog with Nuxt.js and Supabase',
+      background_color: '##007bff',
+
+    },
   }
 }

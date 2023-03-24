@@ -21,6 +21,7 @@
     "vue-template-compiler": "^2.7.10"
   },
   "devDependencies": {
+    "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/supabase": "^0.3.1"
   }
 }
