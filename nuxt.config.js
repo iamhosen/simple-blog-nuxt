@@ -70,8 +70,8 @@ export default {
   },
 
   env: {
-    supabaseApiKey: process.env.SUPABASE_API_KEY,
-    supabaseUrl: process.env.SUPABASE_URL
+    supabaseApiKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsYmdjc2prbnlpZ3NsdGVsc2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk2Njk3MjMsImV4cCI6MTk5NTI0NTcyM30.doUk2a3_Vvv-DF-Q2sErv42Qw7EKyzSx0GOuF8KUC5U',
+    supabaseUrl: 'https://dlbgcsjknyigsltelsdq.supabase.co'
   },
 
   pwa: {
