@@ -25,7 +25,7 @@ export const mutations = {
 export const actions = {
     async fetchPosts({ commit }) {
         await this.$axios
-            .get("/posts")
+            .get("/rest/v1/posts")
             .then(res => commit("setPosts", res.data))
             .catch(err => console.log(err))
 
@@ -33,7 +33,7 @@ export const actions = {
 
     async createPost({ commit }, post) {
         await this.$axios
-            .post('/posts', post)
+            .post('/rest/v1/posts', post)
             .then(res => {
                 commit("addPost", post)
             })
@@ -44,7 +44,7 @@ export const actions = {
         commit("removePost", id);
 
         await this.$axios
-            .delete(`/posts?id=eq.${id}`)
+            .delete(`/rest/v1/posts?id=eq.${id}`)
             .then(res => console.log(res))
             .catch(err => console.log(err))
 

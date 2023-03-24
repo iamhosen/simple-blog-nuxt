@@ -34,6 +34,7 @@ export default {
       const post = {
         title: this.title,
         text: this.text,
+        user_id: this.$store.getters["auth/user"].id,
       };
       await this.$store.dispatch("createPost", post);
       this.$router.push("/");

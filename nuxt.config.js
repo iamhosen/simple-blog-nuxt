@@ -28,7 +28,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/supabase',
+    // { src: '~/plugins/supabase.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,11 +46,17 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // '@nuxtjs/auth-next',
+    // '@nuxtjs/supabase',
   ],
+
+  router: {
+    middleware: 'auth'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://xirwawleakjvgynntnow.supabase.co/rest/v1',
+    baseURL: `${process.env.SUPABASE_URL}`,
     headers: {
       common: {
         "Content-Type": "application/json",
@@ -61,6 +69,33 @@ export default {
   },
 
   env: {
-    supabaseApiKey: process.env.SUPABASE_API_KEY
+    supabaseApiKey: process.env.SUPABASE_API_KEY,
+    supabaseUrl: process.env.SUPABASE_URL
+  },
+
+  // supabase: {
+  //   key: process.env.SUPABASE_API_KEY,
+  // },
+
+  auth: {
+    strategies: {
+      local: {
+        // token: {
+        //   property: 'token',
+        //   global: true,
+        //   // required: true,
+        //   // type: 'Bearer'
+        // },
+        // user: {
+        //   property: 'user',
+        //   // autoFetch: true
+        // },
+        endpoints: {
+          login: { url: '/login', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/user', method: 'get' }
+        }
+      }
+    }
   }
 }
