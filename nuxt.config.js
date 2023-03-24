@@ -79,7 +79,7 @@ export default {
       theme_color: '##007bff',
       mobileAppIOS: true,
       mobileApp: true,
-
+      appleStatusBarStyle: 'black'
     },
     manifest: {
       name: 'Simple Blog',
