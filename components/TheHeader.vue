@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <nuxt-link to="/">
-        <b-navbar-brand>simple-blog-nuxt</b-navbar-brand>
+        <b-navbar-brand class="text-monospace">simple-blog-nuxt</b-navbar-brand>
       </nuxt-link>
 
       <b-collapse id="nav-collapse" is-nav>

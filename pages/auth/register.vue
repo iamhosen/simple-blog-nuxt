@@ -19,7 +19,13 @@
           v-model="password"
         />
       </div>
-      <button class="btn btn-primary" type="submit">Register</button>
+      <button class="btn btn-primary" type="submit" v-if="!isLoading">
+        Register
+      </button>
+      <b-button variant="primary" disabled v-else>
+        <b-spinner small></b-spinner>
+        Loading...
+      </b-button>
     </form>
     <hr />
     <p>
@@ -35,11 +41,14 @@ export default {
       name: "",
       email: "",
       password: "",
+      isLoading: false,
     };
   },
 
   methods: {
     async register() {
+      this.isLoading = true;
+
       const user = {
         email: this.email,
         password: this.password,
@@ -51,6 +60,8 @@ export default {
       };
 
       const res = await this.$store.dispatch("auth/register", user);
+
+      this.isLoading = false;
       alert(res);
       this.$router.push("/");
     },

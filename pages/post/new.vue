@@ -15,7 +15,13 @@
           rows="10"
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" v-if="!isLoading">
+        Submit
+      </button>
+      <b-button variant="primary" disabled v-else>
+        <b-spinner small></b-spinner>
+        Loading...
+      </b-button>
     </form>
   </div>
 </template>
@@ -26,17 +32,21 @@ export default {
     return {
       title: "",
       text: "",
+      isLoading: false,
     };
   },
 
   methods: {
     async createPost() {
+      this.isLoading = true;
       const post = {
         title: this.title,
         text: this.text,
         user_id: this.$store.getters["auth/user"].id,
       };
       await this.$store.dispatch("createPost", post);
+
+      this.isLoading = false;
       this.$router.push("/");
     },
   },

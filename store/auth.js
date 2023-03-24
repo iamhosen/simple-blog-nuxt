@@ -93,6 +93,7 @@ export const actions = {
         commit('setToken', null)
         commit('setLoggedIn', false)
 
+        alert('You have successfully logged out!')
         this.$router.push('/auth/login')
     }
 }

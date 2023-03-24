@@ -41,14 +41,17 @@ export const actions = {
     },
 
     async deletePost({ commit, dispatch }, id) {
-        commit("removePost", id);
-
         await this.$axios
             .delete(`/rest/v1/posts?id=eq.${id}`)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => {
+                console.log(res);
+                this.$router.push("/");
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
-        dispatch("fetchPosts")
+        await dispatch("fetchPosts")
     }
 
 

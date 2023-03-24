@@ -15,7 +15,13 @@
           v-model="password"
         />
       </div>
-      <button class="btn btn-primary" type="submit">Login</button>
+      <button class="btn btn-primary" type="submit" v-if="!isLoading">
+        Login
+      </button>
+      <b-button variant="primary" disabled v-else>
+        <b-spinner small></b-spinner>
+        Loading...
+      </b-button>
     </form>
     <hr />
     <nuxt-link to="/auth/register">Register</nuxt-link>
@@ -28,17 +34,22 @@ export default {
     return {
       email: "",
       password: "",
+      isLoading: false,
     };
   },
 
   methods: {
     async login() {
+      this.isLoading = true;
+
       const user = {
         email: this.email,
         password: this.password,
       };
 
       await this.$store.dispatch("auth/login", user);
+
+      this.isLoading = false;
       this.$router.push("/");
     },
   },
